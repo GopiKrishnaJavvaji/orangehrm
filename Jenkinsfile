@@ -2,22 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+
+        stage('Checkout Code') {
             steps {
-                echo 'Getting OrangeHRM source code'
+                echo 'Checking out OrangeHRM source code'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building Docker image'
+                sh 'docker build -t orangehrm-app .'
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying OrangeHRM application'
-            }
-        }
     }
 }
